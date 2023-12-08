@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
 
-import 'homepage.dart';
+import 'package:demoalarm/enums.dart';
+import 'package:demoalarm/models/menu_info.dart';
+import 'package:demoalarm/views/homepage.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +23,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: ChangeNotifierProvider<MenuInfo>(
+        create: (BuildContext context) =>MenuInfo(MenuType.clock),
+        child:  const HomePage(),),
     );
   }
 }
